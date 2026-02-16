@@ -43,7 +43,7 @@ function updateDashboard(data) {
     }
     
     const obs = data.obs[0];
-    const temp = obs.air_temperature;
+    const temp = celsiusToFahrenheit(obs.air_temperature);
     const humidity = obs.relative_humidity;
     const pressure = obs.station_pressure;
     const windSpeed = obs.wind_avg;
@@ -52,7 +52,7 @@ function updateDashboard(data) {
     const precipType = obs.precipitation_type;
     const solarRad = obs.solar_radiation;
     const uv = obs.uv;
-    const feelsLike = obs.feels_like;
+    const feelsLike = celsiusToFahrenheit(obs.feels_like);
     
     // Calculate wet bulb temperature
     const wetBulbTemp = calculateWetBulbTemperature(temp, humidity);
