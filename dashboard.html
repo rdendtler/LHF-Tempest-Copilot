@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Little Hill Farm</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Little Hill Farm</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html" class="active">Current Weather Conditions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Weather Dashboard</h2>
+            
+            <div id="dashboard-content" class="dashboard-grid">
+                <div class="loading">Loading weather data...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Little Hill Farm. Weather data from Tempest Weather Station.</p>
+    </footer>
+
+    <script src="weather.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Hill Farm - Weather Station</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Little Hill Farm</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dashboard.html">Current Weather Conditions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Little Hill Farm</h2>
+            <p>Your local weather information from our Tempest Weather Station</p>
+        </section>
+
+        <section class="current-weather">
+            <h3>Current Weather</h3>
+            <div id="weather-summary" class="weather-summary">
+                <div class="loading">Loading weather data...</div>
+            </div>
+        </section>
+
+        <section class="riding-conditions">
+            <h3>Riding Conditions</h3>
+            <div id="riding-indicator" class="riding-indicator">
+                <div class="loading">Calculating conditions...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Little Hill Farm. Weather data from Tempest Weather Station.</p>
+    </footer>
+
+    <script src="weather.js"></script>
+</body>
+</html>
