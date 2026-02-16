@@ -29,9 +29,11 @@ A static website displaying current weather conditions from your Tempest Weather
    - The API token is already configured
    - See [CONFIG.md](CONFIG.md) for detailed setup instructions
 
-2. **Deploy**
-   - Upload all files to any static web hosting service (GitHub Pages, Netlify, etc.)
-   - Or open `index.html` locally in your browser
+2. **Deploy to GitHub Pages**
+   - This repository is configured for automatic deployment to GitHub Pages
+   - Once merged to `main` branch, the site will be available at: `https://rdendtler.github.io/LHF-Tempest-Copilot/`
+   - The GitHub Actions workflow will automatically deploy on every push to `main`
+   - Alternative: Upload files to any static web hosting (Netlify, Vercel, etc.)
 
 3. **Customize**
    - Adjust "Too Hot to Ride" thresholds in `weather.js`

@@ -67,14 +67,29 @@ Then open `http://localhost:8000` in your browser.
 
 ## 🚀 Deploy Your Website
 
-### Option 1: GitHub Pages (Free)
+### Automatic Deployment (Recommended)
+
+This repository includes a GitHub Actions workflow for automatic deployment to GitHub Pages.
+
+**Setup:**
+1. Merge your changes to the `main` branch
+2. Go to repository Settings → Pages
+3. Under "Source", select "GitHub Actions"
+4. The workflow will automatically deploy on every push to `main`
+5. Your site will be available at: `https://rdendtler.github.io/LHF-Tempest-Copilot/`
+
+**Manual Deployment:**
+- You can also manually trigger the deployment from the "Actions" tab
+- Select "Deploy to GitHub Pages" workflow and click "Run workflow"
+
+### Option 2: GitHub Pages (Manual)
 1. Go to your repository settings
 2. Click "Pages" in the sidebar
 3. Under "Source", select your branch (main)
 4. Click "Save"
-5. Your site will be available at `https://yourusername.github.io/LHF-Tempest-Copilot/`
+5. Your site will be available at `https://rdendtler.github.io/LHF-Tempest-Copilot/`
 
-### Option 2: Netlify (Free)
+### Option 3: Netlify (Free)
 1. Sign up at https://netlify.com
 2. Click "Add new site" → "Import an existing project"
 3. Connect to your GitHub repository
