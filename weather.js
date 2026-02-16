@@ -1,4 +1,7 @@
 // Weather API Configuration
+// Note: This API token is intentionally client-side accessible as it's a read-only
+// token for a personal weather station. Tempest API tokens are designed for this use.
+// The token only allows reading data from your specific station.
 // Replace YOUR_STATION_ID with your actual Tempest station ID
 const TEMPEST_CONFIG = {
     stationId: 'YOUR_STATION_ID', // Replace with your station ID
