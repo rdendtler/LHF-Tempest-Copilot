@@ -113,6 +113,23 @@ function getRidingStatus(wetBulbTemp) {
 }
 
 /**
+ * Get weather icon based on conditions
+ */
+function getWeatherIcon(type) {
+    const icons = {
+        temperature: '🌡️',
+        humidity: '💧',
+        wind: '💨',
+        pressure: '⏱️',
+        rain: '🌧️',
+        sun: '☀️',
+        cloud: '☁️',
+        storm: '⛈️'
+    };
+    return icons[type] || '📊';
+}
+
+/**
  * Update the weather summary on the main page
  */
 function updateWeatherSummary(data) {
@@ -131,22 +148,84 @@ function updateWeatherSummary(data) {
     
     summaryElement.innerHTML = `
         <div class="weather-item">
+            <div class="icon">${getWeatherIcon('temperature')}</div>
             <div class="label">Temperature</div>
             <div class="value">${temp.toFixed(1)}<span class="unit">°F</span></div>
         </div>
         <div class="weather-item">
+            <div class="icon">${getWeatherIcon('humidity')}</div>
             <div class="label">Humidity</div>
             <div class="value">${humidity.toFixed(0)}<span class="unit">%</span></div>
         </div>
         <div class="weather-item">
+            <div class="icon">${getWeatherIcon('wind')}</div>
             <div class="label">Wind Speed</div>
             <div class="value">${windSpeed.toFixed(1)}<span class="unit">mph</span></div>
         </div>
         <div class="weather-item">
+            <div class="icon">🌪️</div>
             <div class="label">Wind Gust</div>
             <div class="value">${windGust.toFixed(1)}<span class="unit">mph</span></div>
         </div>
     `;
+}
+
+/**
+ * Update weather cards on the main page
+ */
+function updateWeatherCards(data) {
+    const cardsElement = document.getElementById('weather-cards');
+    
+    if (!cardsElement || !data || !data.obs || data.obs.length === 0) {
+        return;
+    }
+    
+    const obs = data.obs[0];
+    const pressure = obs.station_pressure;
+    const solarRad = obs.solar_radiation;
+    const uv = obs.uv;
+    const precipType = obs.precipitation_type;
+    
+    // Calculate dew point
+    const temp = obs.air_temperature;
+    const humidity = obs.relative_humidity;
+    const tempC = (temp - 32) * 5 / 9;
+    const dewPointC = tempC - ((100 - humidity) / 5);
+    const dewPoint = dewPointC * 9 / 5 + 32;
+    
+    cardsElement.innerHTML = `
+        <div class="weather-card">
+            <div class="card-icon">⏱️</div>
+            <h4>Barometric Pressure</h4>
+            <div class="card-value">${pressure.toFixed(2)} inHg</div>
+            <div class="card-description">Current atmospheric pressure</div>
+        </div>
+        
+        <div class="weather-card">
+            <div class="card-icon">☀️</div>
+            <h4>UV Index</h4>
+            <div class="card-value">${uv.toFixed(0)}</div>
+            <div class="card-description">${getUVDescription(uv)} exposure level</div>
+        </div>
+        
+        <div class="weather-card">
+            <div class="card-icon">💧</div>
+            <h4>Dew Point</h4>
+            <div class="card-value">${dewPoint.toFixed(1)}°F</div>
+            <div class="card-description">Moisture saturation point</div>
+        </div>
+    `;
+}
+
+/**
+ * Get UV index description
+ */
+function getUVDescription(uv) {
+    if (uv < 3) return 'Low';
+    if (uv < 6) return 'Moderate';
+    if (uv < 8) return 'High';
+    if (uv < 11) return 'Very High';
+    return 'Extreme';
 }
 
 /**
@@ -191,6 +270,10 @@ async function initializeWeather() {
     
     if (document.getElementById('riding-indicator')) {
         updateRidingIndicator(data);
+    }
+    
+    if (document.getElementById('weather-cards')) {
+        updateWeatherCards(data);
     }
 }
 

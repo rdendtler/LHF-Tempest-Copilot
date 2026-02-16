@@ -68,79 +68,79 @@ function updateDashboard(data) {
     
     dashboardElement.innerHTML = `
         <div class="dashboard-card">
-            <h4>Temperature</h4>
+            <h4>🌡️ Temperature</h4>
             <div class="value">${temp.toFixed(1)}°F</div>
             <div class="description">Current air temperature</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Feels Like</h4>
+            <h4>🌡️ Feels Like</h4>
             <div class="value">${feelsLike.toFixed(1)}°F</div>
             <div class="description">Perceived temperature</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Wet Bulb Temperature</h4>
+            <h4>🌡️ Wet Bulb Temperature</h4>
             <div class="value">${wetBulbTemp.toFixed(1)}°F</div>
             <div class="description">Heat stress indicator</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Dew Point</h4>
+            <h4>💧 Dew Point</h4>
             <div class="value">${dewPoint.toFixed(1)}°F</div>
             <div class="description">Moisture in the air</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Humidity</h4>
+            <h4>💧 Humidity</h4>
             <div class="value">${humidity.toFixed(0)}%</div>
             <div class="description">Relative humidity</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Barometric Pressure</h4>
+            <h4>⏱️ Barometric Pressure</h4>
             <div class="value">${pressure.toFixed(2)}</div>
             <div class="description">inHg</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Wind Speed</h4>
+            <h4>💨 Wind Speed</h4>
             <div class="value">${windSpeed.toFixed(1)}</div>
             <div class="description">mph average</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Wind Gust</h4>
+            <h4>🌪️ Wind Gust</h4>
             <div class="value">${windGust.toFixed(1)}</div>
             <div class="description">mph maximum</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Wind Direction</h4>
+            <h4>🧭 Wind Direction</h4>
             <div class="value">${getWindDirection(windDir)}</div>
             <div class="description">${windDir}° from north</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>UV Index</h4>
+            <h4>☀️ UV Index</h4>
             <div class="value">${uv.toFixed(0)}</div>
             <div class="description">${getUVDescription(uv)}</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Solar Radiation</h4>
+            <h4>☀️ Solar Radiation</h4>
             <div class="value">${solarRad}</div>
             <div class="description">W/m²</div>
         </div>
         
         <div class="dashboard-card">
-            <h4>Precipitation</h4>
+            <h4>🌧️ Precipitation</h4>
             <div class="value">${getPrecipitationType(precipType)}</div>
             <div class="description">Current conditions</div>
         </div>
         
         <div class="dashboard-card" style="grid-column: 1 / -1;">
-            <h4>Last Update</h4>
+            <h4>🕐 Last Update</h4>
             <div class="value" style="font-size: 1.5rem;">${timeStr}</div>
             <div class="description">${timestamp.toLocaleDateString()}</div>
         </div>
