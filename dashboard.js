@@ -57,10 +57,10 @@ function updateDashboard(data) {
     // Calculate wet bulb temperature
     const wetBulbTemp = calculateWetBulbTemperature(temp, humidity);
     
-    // Calculate dew point (approximation)
-    const tempC = (temp - 32) * 5 / 9;
+    // Calculate dew point (approximation) - use Celsius directly from API
+    const tempC = obs.air_temperature;
     const dewPointC = tempC - ((100 - humidity) / 5);
-    const dewPoint = dewPointC * 9 / 5 + 32;
+    const dewPoint = celsiusToFahrenheit(dewPointC);
     
     // Get timestamp
     const timestamp = new Date(obs.timestamp * 1000);

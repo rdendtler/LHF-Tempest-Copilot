@@ -198,12 +198,11 @@ function updateWeatherCards(data) {
     const uv = obs.uv;
     const precipType = obs.precipitation_type;
     
-    // Calculate dew point
-    const temp = celsiusToFahrenheit(obs.air_temperature);
+    // Calculate dew point (use Celsius directly from API)
+    const tempC = obs.air_temperature;
     const humidity = obs.relative_humidity;
-    const tempC = (temp - 32) * 5 / 9;
     const dewPointC = tempC - ((100 - humidity) / 5);
-    const dewPoint = dewPointC * 9 / 5 + 32;
+    const dewPoint = celsiusToFahrenheit(dewPointC);
     
     cardsElement.innerHTML = `
         <div class="weather-card">
