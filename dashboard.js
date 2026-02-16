@@ -43,7 +43,7 @@ function updateDashboard(data) {
     }
     
     const obs = data.obs[0];
-    const temp = obs.air_temperature;
+    const temp = celsiusToFahrenheit(obs.air_temperature);
     const humidity = obs.relative_humidity;
     const pressure = obs.station_pressure;
     const windSpeed = obs.wind_avg;
@@ -52,15 +52,15 @@ function updateDashboard(data) {
     const precipType = obs.precipitation_type;
     const solarRad = obs.solar_radiation;
     const uv = obs.uv;
-    const feelsLike = obs.feels_like;
+    const feelsLike = celsiusToFahrenheit(obs.feels_like);
     
     // Calculate wet bulb temperature
     const wetBulbTemp = calculateWetBulbTemperature(temp, humidity);
     
-    // Calculate dew point (approximation)
-    const tempC = (temp - 32) * 5 / 9;
+    // Calculate dew point (approximation) - use Celsius directly from API
+    const tempC = obs.air_temperature;
     const dewPointC = tempC - ((100 - humidity) / 5);
-    const dewPoint = dewPointC * 9 / 5 + 32;
+    const dewPoint = celsiusToFahrenheit(dewPointC);
     
     // Get timestamp
     const timestamp = new Date(obs.timestamp * 1000);

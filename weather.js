@@ -37,13 +37,22 @@ async function fetchWeatherData() {
 }
 
 /**
+ * Convert Celsius to Fahrenheit
+ * @param {number} celsius - Temperature in Celsius
+ * @returns {number} Temperature in Fahrenheit
+ */
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32;
+}
+
+/**
  * Mock weather data for development/demo purposes
  */
 function getMockWeatherData() {
     return {
         obs: [{
             timestamp: Date.now() / 1000,
-            air_temperature: 85,      // °F
+            air_temperature: 29.4,     // °C (85°F)
             relative_humidity: 65,     // %
             station_pressure: 29.92,   // inHg
             wind_avg: 5,               // mph
@@ -52,7 +61,7 @@ function getMockWeatherData() {
             precipitation_type: 0,
             solar_radiation: 800,      // W/m²
             uv: 5,
-            feels_like: 90            // °F
+            feels_like: 32.2          // °C (90°F)
         }]
     };
 }
@@ -144,7 +153,7 @@ function updateWeatherSummary(data) {
     }
     
     const obs = data.obs[0];
-    const temp = obs.air_temperature;
+    const temp = celsiusToFahrenheit(obs.air_temperature);
     const humidity = obs.relative_humidity;
     const windSpeed = obs.wind_avg;
     const windGust = obs.wind_gust;
@@ -189,12 +198,11 @@ function updateWeatherCards(data) {
     const uv = obs.uv;
     const precipType = obs.precipitation_type;
     
-    // Calculate dew point
-    const temp = obs.air_temperature;
+    // Calculate dew point (use Celsius directly from API)
+    const tempC = obs.air_temperature;
     const humidity = obs.relative_humidity;
-    const tempC = (temp - 32) * 5 / 9;
     const dewPointC = tempC - ((100 - humidity) / 5);
-    const dewPoint = dewPointC * 9 / 5 + 32;
+    const dewPoint = celsiusToFahrenheit(dewPointC);
     
     cardsElement.innerHTML = `
         <div class="weather-card">
@@ -243,7 +251,7 @@ function updateRidingIndicator(data) {
     }
     
     const obs = data.obs[0];
-    const temp = obs.air_temperature;
+    const temp = celsiusToFahrenheit(obs.air_temperature);
     const humidity = obs.relative_humidity;
     
     const wetBulbTemp = calculateWetBulbTemperature(temp, humidity);
