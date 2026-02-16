@@ -4,7 +4,7 @@
 // The token only allows reading data from your specific station.
 // Replace YOUR_STATION_ID with your actual Tempest station ID
 const TEMPEST_CONFIG = {
-    stationId: 'YOUR_STATION_ID', // Replace with your station ID
+    stationId: '142632', // Replace with your station ID
     apiToken: '8bbac51c-64fc-4f20-9000-dea6c4b8e17c',
     apiUrl: 'https://swd.weatherflow.com/swd/rest/observations/station/'
 };
